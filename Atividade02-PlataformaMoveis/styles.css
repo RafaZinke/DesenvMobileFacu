@@ -1,0 +1,146 @@
+:root{
+  --bg:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --primary:#2d6cdf;
+  --card:#f3f4f6;
+}
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+
+.container{
+  display:grid;
+  grid-template-rows:auto auto 1fr auto;
+  min-height:100dvh;
+}
+
+header{
+  border-bottom:1px solid #e5e7eb;
+  background:#fff;
+}
+.topbar{
+  display:grid;
+  grid-template-columns:160px 1fr auto;
+  gap:1rem;
+  align-items:center;
+  padding:0.75rem 1rem;
+  max-width:1200px;
+  margin:0 auto;
+}
+.logo{display:flex;align-items:center;gap:.5rem}
+.logo img{width:56px;height:56px;border-radius:50%}
+.search{
+  display:flex;align-items:center;gap:.5rem;
+  background:var(--card);
+  border-radius:999px;
+  padding:.5rem .75rem;
+}
+.search input{
+  border:0;background:transparent;width:100%;outline:none;
+  font-size:0.95rem;
+}
+
+nav{display:flex;gap:1rem;align-items:center}
+nav a{padding:.5rem .75rem;border-radius:.5rem;color:var(--muted)}
+nav a.active, nav a:hover{background:var(--card);color:var(--text)}
+
+.hamburger{
+  display:none;border:0;background:transparent;
+  font-size:1.5rem;line-height:1;color:var(--text);cursor:pointer;
+}
+
+/* Banner */
+.banner{
+  max-width:1200px;margin:0.5rem auto 1rem; padding:0 1rem;
+}
+.banner img{
+  width:100%;height:260px;object-fit:cover;border-radius:1rem;
+}
+
+/* Grid de produtos */
+.grid{
+  max-width:1200px;margin:0 auto;padding:0 1rem 2rem;
+  display:grid;gap:1rem;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+}
+.card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:1rem;
+  overflow:hidden;
+
+  
+  display:grid;
+  grid-template-rows: auto auto 1fr auto;
+}
+.card .thumb{aspect-ratio:1/1;background:var(--card)}
+.card h3{font-size:1rem;margin:.75rem 1rem 0}
+.card p{color:var(--muted);margin:.5rem 1rem 1rem;font-size:.9rem}
+
+
+.card .buy{
+  grid-row:4;
+  display:flex;
+  justify-content:flex-end;
+  gap:.5rem;
+  padding:0 1rem 1rem;
+}
+
+
+.btn{
+  border:1px solid var(--primary);
+  background:#fff;
+  color:var(--primary);
+  padding:0.25rem 0.6rem;
+  border-radius:0.4rem;
+  cursor:pointer;
+  font-weight:600;
+  display:inline-block;
+  font-size:0.85rem;
+  line-height:1;
+  white-space:nowrap;
+  text-align:center;
+}
+.btn:hover{
+  background:var(--primary);
+  color:#fff;
+}
+
+/* Rodapé */
+footer{background:#4b5563;color:#fff;margin-top:auto}
+.footer-inner{
+  max-width:1200px;margin:0 auto;padding:1rem;
+  display:grid;gap:1rem;
+  grid-template-columns: 1fr auto;
+  align-items:center;
+}
+.company{opacity:.9}
+.social{display:flex;gap:.5rem}
+.dot{width:14px;height:14px;background:#9ca3af;border-radius:50%}
+
+
+@media (max-width: 768px){
+   .grid{
+    grid-template-columns: 1fr !important;  
+  }
+  .topbar{grid-template-columns:auto 1fr auto}
+  nav{display:none}
+  .hamburger{display:block}
+  .drawer{
+    position:fixed;inset:0 30% 0 0; background:#fff; box-shadow:2px 0 20px rgba(0,0,0,.08);
+    transform:translateX(-100%); transition:transform .2s ease; z-index:50; padding:1rem;
+    display:flex;flex-direction:column;gap:.5rem;
+  }
+  .drawer.open{transform:translateX(0)}
+  .scrim{position:fixed;inset:0;background:rgba(0,0,0,.25);backdrop-filter:blur(1px);display:none;z-index:40}
+  .scrim.show{display:block}
+}
